@@ -1,3 +1,5 @@
+
+
 describe('Opening the app', function() {
     it('finds the content "Barcelona"', function() {
       cy.visit('https://weblocal.badi.com/')
@@ -65,12 +67,56 @@ describe('Searching for Barcelona', function(){
 
 })
 
-describe('Registering user', function() {
+describe.only('Registering user', function() {
+
+    let chars = 'abcdefghijklmnopqrstuvwxyz';
+    let fakeemail = chars[Math.floor(Math.random()*26)] + Math.random().toString(36).substring(2,11) + '@mailinator.com';
+    print(chars);
+    // register user with simple email
+
     it('Simple email registration"', function() {
       cy.visit('https://weblocal.badi.com/')
       cy.get(':nth-child(6) > .Text__button').click()
       cy.contains('Already have an account? Log in')
       cy.get('.AuthButton__email').click()
+
+      //let chars = 'abcdefghijklmnopqrstuvwxyz';
+      //let fakeemail = chars[Math.floor(Math.random()*26)] + Math.random().toString(36).substring(2,11) + '@mailinator.com';
+      //print(chars);
+
+      // enter username and password
+      cy.get('#username').type(fakeemail)
+      cy.get('#password').type("Test123")
+      cy.get('#signUp').click()
+
+      // accept GDPR modal
+      cy.get('.GDPR__modal').contains('Just to let you know')
+      cy.get('.GDPR__buttons > :nth-child(1)').click()
+
+      // Assert modal seeker/lister is there
+      cy.contains('I have a room to list')
+      cy.contains('I\'m looking for a room to live in')
+
+      // go to seeker mode
+      cy.get('.Form__RadioButtonGroup--wrapper > :nth-child(2)').click()
+      cy.get('.Button__green-dark').click()
+
+      // assert user is logged-in
+      cy.get('.UserMenu__avatar').click()
+      cy.url().should('include', '/my-profile')
+    })
+
+    it('Complete profile', function(){
+        // check page is profile page
+        cy.url().should('include', '/my-profile')
+        cy.contains('Verify your profile')
+
+        //enter email activation code
+        cy.get('#email').type(fakeemail)
+        cy.log(fakeemail)
+        cy.get(':nth-child(1) > form > .VerificationBlock > .VerificationButtons > .Button__green').click()
+        //cy.contains('address').contains('Enter the code we just emailed you to finish verifying your email address.').click()
+        //cy.visit('https://www.mailinator.com/')
     })
 
 

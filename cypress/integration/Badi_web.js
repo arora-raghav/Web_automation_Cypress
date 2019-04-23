@@ -73,9 +73,5 @@ describe('Registering user', function() {
       cy.get('.AuthButton__email').click()
     })
 
-    it('Test with Lourdes', function (){
-        cy.get('.IntroCard_orange > .IntroCard__Button')        cy.get('.AuthForms').click()
-        cy.contains('Google')
-        cy.contains('Email')
-        cy.contains('Facebook')
+
   })

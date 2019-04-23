@@ -126,6 +126,63 @@ describe.only('Registering user', function() {
         cy.get(':nth-child(3) > form > .VerificationBlock > .VerificationButtons > .Button__green').click()
         cy.contains('Your phone has been confirmed')
 
+        // click on complete profile
+
+        cy.contains('Complete profile').click()    
+        cy.url().should('include', 'users/edit')
+        cy.get('#name').type('Testuserfirstname')
+        cy.get('#lastName').type('Testuserlastname')
+        cy.get('.col-4 > .Form__Select--wrapper > select').select('1981')
+        cy.contains('female').click()
+        cy.contains('work').click()
+        cy.get('#formblock-work > .Form__Select--wrapper > select').select('IT') //add what do you do for a living 
+        cy.get('.Form__SelectMultiple--placeholder').click()
+        cy.contains('English').click() // add language
+        cy.contains('French').click()
+        cy.contains('Armenian').click()
+        cy.get('.Form__SelectMultiple--outer-background').click()
+
+        // add personality traits
+
+        cy.get('.Form__TagList > :nth-child(1)').click()
+        cy.contains('Active').click()
+        cy.contains('Practical').click()
+        cy.contains('Tolerant').click()
+
+        // add lifestyle trait
+        cy.contains('Lifestyle').click()
+        cy.contains('Chef').click()
+        cy.contains('Book lover').click()
+        cy.contains('Partier').click()
+        
+        // add Music taste
+        cy.contains('Music').click()
+        cy.contains('Reggae').click()
+        cy.contains('Metal').click()
+        cy.contains('Ska').click()
+
+         // add Sports genres taste
+        cy.contains('Sports').click()
+        cy.contains('Athletics').click()
+        cy.contains('Pole dancing').click()
+        cy.contains('Hiking').click()
+
+        // add Movie genres taste
+        cy.contains('Movie genres').click()
+        cy.contains('Sci-fi').click()
+        cy.contains('Documentary').click()
+        cy.contains('Horror').click()
+
+        // save profile
+        cy.contains('Save').click()
+
+        cy.get('textarea').type('This is a sample of text about me and my life')
+
+        //check profile is correct
+        cy.contains('Active', 'Practical', 'Tolerant')
+        
+
+
     })
 
 

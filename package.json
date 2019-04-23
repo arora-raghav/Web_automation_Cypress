@@ -1,0 +1,30 @@
+{
+  "name": "web_automation",
+  "version": "1.0.0",
+  "description": "web automation with cypress",
+  "main": "to_erase.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmaurelbadi/Web_automation_Cypress.git"
+  },
+  "keywords": [
+    "web",
+    "automation",
+    "cypress"
+  ],
+  "author": "Jules Maurel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmaurelbadi/Web_automation_Cypress/issues"
+  },
+  "homepage": "https://github.com/jmaurelbadi/Web_automation_Cypress#readme",
+  "devDependencies": {
+    "cypress": "^3.2.0"
+  }
+
+}

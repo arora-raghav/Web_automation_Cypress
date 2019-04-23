@@ -111,12 +111,21 @@ describe.only('Registering user', function() {
         cy.url().should('include', '/my-profile')
         cy.contains('Verify your profile')
 
-        //enter email activation code
+        //enter email activation code - not able check email at the momment
         cy.get('#email').type(fakeemail)
         cy.log(fakeemail)
         cy.get(':nth-child(1) > form > .VerificationBlock > .VerificationButtons > .Button__green').click()
-        //cy.contains('address').contains('Enter the code we just emailed you to finish verifying your email address.').click()
-        //cy.visit('https://www.mailinator.com/')
+
+
+        //verify phone number using 2222
+        cy.get(':nth-child(3) > form > .VerificationBlock > .VerificationButtons > .Button__grey').click()
+        cy.get(':nth-child(3) > form > .VerificationBlock > .VerificationInputs > .form__input > [data-tip=""] > #code').type('2222')
+
+        cy.get(':nth-child(3) > form > .VerificationBlock > .VerificationInputs > .form__input > [data-tip=""] > #code')
+          .should('not.have.class', 'Button__disabled')
+        cy.get(':nth-child(3) > form > .VerificationBlock > .VerificationButtons > .Button__green').click()
+        cy.contains('Your phone has been confirmed')
+
     })
 
 

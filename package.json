@@ -2,7 +2,7 @@
   "name": "web_automation",
   "version": "1.0.0",
   "description": "web automation with cypress",
-  "main": "to_erase.js",
+  "main": "Badi_web.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cypress:open": "cypress open"

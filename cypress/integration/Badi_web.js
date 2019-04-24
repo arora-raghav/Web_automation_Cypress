@@ -67,7 +67,7 @@ describe('Searching for Barcelona', function(){
 
 })
 
-describe.only('Registering user', function() {
+describe('Registering user', function() {
 
     let chars = 'abcdefghijklmnopqrstuvwxyz';
     let fakeemail = chars[Math.floor(Math.random()*26)] + Math.random().toString(36).substring(2,11) + '@mailinator.com';
@@ -179,7 +179,7 @@ describe.only('Registering user', function() {
         cy.get('textarea').type('This is a sample of text about me and my life')
 
         //check profile is correct
-        cy.contains('Active', 'Practical', 'Tolerant')
+        cy.contains('Documentary', 'Hiking', 'Sci-fi')
         
 
 

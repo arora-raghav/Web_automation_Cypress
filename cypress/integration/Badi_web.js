@@ -22,13 +22,15 @@ describe('Searching for Barcelona', function(){
         cy.contains('cookie')
     })
 
+
+    // check last date of the month, need to do this progammatically
     it('Refine search in with date', function() {
         cy.get('.filter__options_status > .filter__select').click()
         cy.contains('Choose day')
         cy.get('.filter__options_status > .filter__dropdown > .filter__box > .filter__list > :nth-child(2) > .switcher > .switcher__text').click()    
-        cy.contains('April 2019') 
-        cy.get('[aria-label="Monday, April 29, 2019"]').click()
-        cy.contains('29 April')
+        cy.contains('May 2019') 
+        cy.get('[aria-label="Monday, May 27, 2019"]').click()
+        cy.contains('27 May')
         cy.get('.filter__options_status > .filter__choose > .filter__clear').click()
     })
 

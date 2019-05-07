@@ -12,23 +12,44 @@ describe('Lister', function(){
         cy.get('.ListerInfo__Button').click()
         cy.contains('Rent out your room')
         cy.get('.LandingHeader__Content > .RentRoomButton').click()
+
+        // login with email
         cy.contains('Continue with')
         cy.get(':nth-child(3) > .AuthButton').click()
         cy.get('#username').type(fakeemail)
         cy.get('#password').type('Test123')
         cy.get('.Button__text').should('not.be.disabled')
         cy.get('.Button__text').click()
-        cy.get(':nth-child(1) > .Button').click()
+
+        // accept GDPR modal
+        cy.get('.GDPR__modal').contains('Just to let you know')
+        cy.contains('Accept').click()
+
+        // switch to lister mode
+        cy.contains('I have a room to list')
         cy.get(':nth-child(1) > label').click()
-        cy.get('.Button').click()
+        cy.contains('Continue').click()
+
+        // select "I live in this property"
         cy.get(':nth-child(1) > label').click()
         cy.get('.Button__green-dark').click()
-        cy.get('.LandingHeader__Content > .RentRoomButton').click()
 
-        cy.get(':nth-child(1) > .Form__GeoSuggest--wrapper > .geosuggest > .geosuggest__input-wrapper > .geosuggest__input').type('Barcelona')
-        cy.get('.geosuggest__item--active').click()
-        cy.get(':nth-child(2) > .Form__GeoSuggest--wrapper > .geosuggest > .geosuggest__input-wrapper > .geosuggest__input').type('Muntaner')
-        cy.get('.geosuggest__item--active > span > .geosuggest__item__matched-text').click()
-        cy.get('.col-12 > .Button').click()
+        // check url
+        cy.url().should('include', '/rent-room')
+
+        // click on rent out your room
+        cy.contains('Rent out your room').click()
       })
+
+
+      it('Create a listing', function () {
+
+      // select a city
+      cy.get(':nth-child(1) > .Form__GeoSuggest--wrapper > .geosuggest > .geosuggest__input-wrapper > .geosuggest__input')
+      .type("Barcelona")
+      cy.get('.geosuggest__item--active').click()
+
+      })
+
+    
     })

@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cypress:open": "cypress open"
-
   },
   "repository": {
     "type": "git",
@@ -24,7 +23,7 @@
   },
   "homepage": "https://github.com/jmaurelbadi/Web_automation_Cypress#readme",
   "devDependencies": {
-    "cypress": "^3.2.0"
+    "cypress": "^3.2.0",
+    "cypress-file-upload": "^3.1.1"
   }
-
 }

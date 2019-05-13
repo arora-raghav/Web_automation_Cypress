@@ -1,6 +1,6 @@
 // simple registering of a seeker
 
-describe.only('Registering user', function() {
+describe('Registering user seeker', function() {
 
     let chars = 'abcdefghijklmnopqrstuvwxyz';
     let fakeemail = chars[Math.floor(Math.random()*26)] + Math.random().toString(36).substring(2,11) + '@mailinator.com';

@@ -1,3 +1,5 @@
+// Lister logs in and list a room
+
 describe('Lister', function(){
 
     let chars = 'abcdefghijklmnopqrstuvwxyz';

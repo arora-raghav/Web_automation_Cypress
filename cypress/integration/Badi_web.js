@@ -1,4 +1,5 @@
 
+// simple going to the page and searching using the filters
 
 describe('Opening the app', function() {
     it('finds the content "Barcelona"', function() {

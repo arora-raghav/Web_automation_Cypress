@@ -1,3 +1,5 @@
+// simple registering of a seeker
+
 describe.only('Registering user', function() {
 
     let chars = 'abcdefghijklmnopqrstuvwxyz';

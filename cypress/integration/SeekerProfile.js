@@ -129,7 +129,6 @@ describe('Registering user seeker', function() {
         cy.get('[id="icon/close"]').click()
         cy.wait(1000)
         // click submit button
-        //cy.get('.DropZone__Preview--loader > svg', {timeout: 1000}).should("not.be.visible")
 
         cy.get('[type="submit"]').click()
 

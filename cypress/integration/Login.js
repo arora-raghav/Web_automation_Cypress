@@ -2,8 +2,8 @@
 
 
 
-describe('Login with Email', function() {
-    it('User logs with email"', function() {
+describe('Seeker - Login with Email', function() {
+    it('Seeker logs with email"', function() {
       cy.visit('https://weblocal.badi.com/')
   
       // clicks login
@@ -27,10 +27,16 @@ describe('Login with Email', function() {
       cy.get('.Button').click()
 
       //check url
-      cy.url().should('include', '/listings')
+      cy.url().should('include', '/overview')
 
       // log out
       
     })
 
-  })
+    it('Login out',()=>{
+        cy.get('.TopBar__UserMenu').contains('Log out').click({force:true})
+        })
+    })
+
+
+    

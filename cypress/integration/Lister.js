@@ -44,7 +44,7 @@ describe('Lister', function(){
           })
 
 
-      it('Create a listing: step 1 - location', function () {
+      it('step 1 - location', function () {
 
           // select a city
           cy.get(':nth-child(1) > .Form__GeoSuggest--wrapper > .geosuggest > .geosuggest__input-wrapper > .geosuggest__input')
@@ -64,7 +64,7 @@ describe('Lister', function(){
           cy.contains('Continue').click()
           })
       
-      it('Create a listing: step 2 - property', function () {
+      it('step 2 - property', function () {
 
           // select type of property - private room
 
@@ -95,7 +95,7 @@ describe('Lister', function(){
           cy.get('[type="submit"]').click()
         })
 
-      it('Create a listing: step 3 - room', function () {
+      it('step 3 - room', function () {
 
           // select double bed
           cy.get('.Form__RadioButtonGroup--wrapper > :nth-child(1) > label').click()
@@ -120,23 +120,62 @@ describe('Lister', function(){
 
             })
 
-      it('Create a listing: step 4 - photos', function () {
+      it('step 4 - photos', function () {
 
-            //upload profile pics
-        const fileName1 = 'roompic1.png';
-        const fileName2 = 'roompic2.png';
+        cy.contains('Upload all your photos')
 
+        // add a title
+        cy.get('textarea').first().type('THIS IS A TEST FLAT')
+        cy.get(':nth-child(3) > .Form__TextArea--wrapper > textarea').type('This is a short description about the flat')
 
-        cy.fixture(fileName1).then(fileContent => {
+        //upload profile pics
+        const fileName = 'image.png';
+
+        cy.fixture(fileName).then(fileContent => {
           cy.get('.DropZone__Empty').upload(
-            { fileContent, fileName1, mimeType: 'image/png' },
+            { fileContent, fileName, mimeType: 'image/png' },
             { subjectType: 'drag-n-drop' },
           );
         });
 
-        // add a title
+        // click continue
+          
+        cy.get('[type="submit"]').click()
+      })
+
+      it('step 5 - Flatmates', function () {
+
+      // accept default proposition and continue
+      cy.get('[type="submit"]').click()
+
+      })
+
+      it('Verify phone pop up', function () {
+
+        //select Spain
+        cy.get('.Select--select').select('Spain')
+        cy.contains('I have a code').click()
+        cy.get('#code').type('2222',{delay: 100})
+        cy.get('p.text_center > .Button').click()
+
+      })
+
+      it('Complete profile pop up', function () {
+        // check pop up exist
+
+        cy.contains('Your room is nearly published!')
+        cy.get('.CompleteProfile--actions > :nth-child(2) > .Button > .Button__text').click()
         
       })
+
+      it('Complete profile', function(){
+
+        // check url
+        cy.url().should('include', '/edit')
+      })
+
+
+
 
     
     })

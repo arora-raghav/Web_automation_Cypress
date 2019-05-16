@@ -67,6 +67,46 @@ describe('Searching for Barcelona', function(){
 
     })
 
+    it('Close the chat and go back to homepage', function (){
+        cy.get(':nth-child(2) > .popup > .popup__main > .popup__head > .popup__close').click()
+        cy.get('.popup__close').click()
+        cy.get('a > svg').click()
+    })
+
+})
+
+describe('Refining search per price', function(){
+
+    it('finds the content "Barcelona"', function() {
+        cy.visit('https://weblocal.badi.com/')
+    
+        cy.contains('Barcelona')
+      })
+
+    it('Search for Barcelona in search bar', function () {
+        cy.get('.geosuggest__input')
+        .type('Barcelona')
+        cy.get('.geosuggest__item--active > div > .geosuggest__text')
+        .click()
+        cy.contains('Barcelona, Spain')
+
+    })
+
+    it('Select max price to 13 euros', function (){
+        cy.get('.filter__input').type('13')
+        cy.wait(1000)
+        // expect just one result in the carousel)
+        cy.get('.carousel__list').find('li').should('have.length', 1)
+
+    })
+
+    it('Remove price filter', function (){
+        cy.get('.filter__unprice').click()
+        cy.wait(1000)
+        // expect 20 result in the carousel)
+        cy.get('.carousel__list').find('li').should('have.length', 20)
+
+    })
 
 })
 

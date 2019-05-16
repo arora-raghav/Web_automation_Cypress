@@ -117,26 +117,29 @@ describe('Lister', function(){
           // click continue
           
           cy.get('[type="submit"]').click()
+          
 
             })
 
       it('step 4 - photos', function () {
 
-        cy.contains('Upload all your photos')
-
-        // add a title
-        cy.get('textarea').first().type('THIS IS A TEST FLAT')
-        cy.get(':nth-child(3) > .Form__TextArea--wrapper > textarea').type('This is a short description about the flat')
-
-        //upload profile pics
         const fileName = 'image.png';
 
         cy.fixture(fileName).then(fileContent => {
           cy.get('.DropZone__Empty').upload(
             { fileContent, fileName, mimeType: 'image/png' },
-            { subjectType: 'drag-n-drop' },
+            { subjectType: 'input' },
           );
         });
+
+      })
+
+      it('step 4.2 - title and description', function () {
+
+
+        // add a title
+        cy.get('textarea').first().type('THIS IS A TEST FLAT')
+        cy.get(':nth-child(3) > .Form__TextArea--wrapper > textarea').type('This is a short description about the flat')
 
         // click continue
           

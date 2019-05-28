@@ -33,3 +33,9 @@ Cypress.Commands.add('signIn', ({email, password}) => {
         cy.get('#password').type(password)
         cy.get('[type="submit"]').click();
 });
+
+Cypress.Commands.add('logOut', () => {
+
+        cy.get('.TopBar__UserMenu').contains('Log out').click({force:true});
+         
+})

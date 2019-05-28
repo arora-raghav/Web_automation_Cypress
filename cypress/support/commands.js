@@ -24,3 +24,12 @@
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 import 'cypress-file-upload';
+
+Cypress.Commands.add('signIn', ({email, password}) => {
+        cy.visit('https://weblocal.badi.com/')
+        cy.get(':nth-child(7) > .Text__button').click()
+        cy.contains('Continue with Email').click()
+        cy.get('#username').type(email)
+        cy.get('#password').type(password)
+        cy.get('[type="submit"]').click();
+});

@@ -123,12 +123,12 @@ describe('Lister', function(){
 
       it('step 4 - photos', function () {
 
-        const fileName = 'image.png';
+        const fileName = 'roompic1.png';
 
-        cy.fixture(fileName).then(fileContent => {
+        cy.fixture(fileName, 'base64').then(fileContent => {
           cy.get('.DropZone__Empty').upload(
             { fileContent, fileName, mimeType: 'image/png' },
-            { subjectType: 'input' },
+            { subjectType: 'drag-n-drop' },
           );
         });
 

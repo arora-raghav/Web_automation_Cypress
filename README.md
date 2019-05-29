@@ -7,13 +7,13 @@ Testing Cypress to write E2E test for Badi Web
 Start your local server before testing with Cypress
 
 ## Install Cypress
-
+```
 $ cd /your/project/path
 
 $ npm init
 
 $ npm install cypress --save-dev
-
+```
 
 ## Copy this repository to your machine
 ```

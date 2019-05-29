@@ -75,7 +75,7 @@ describe('Searching for Barcelona', function(){
 
 })
 
-describe('Refining search per price', function(){
+describe.only('Refining search per price', function(){
 
     it('finds the content "Barcelona"', function() {
         cy.visit('https://weblocal.badi.com/')
@@ -84,12 +84,12 @@ describe('Refining search per price', function(){
       })
 
     it('Search for Barcelona in search bar', function () {
-        cy.get('.geosuggest__input')
-        .type('Barcelona')
-        cy.get('.geosuggest__item--active > div > .geosuggest__text')
-        .click()
-        cy.contains('Barcelona, Spain')
-
+        // cy.get('.geosuggest__input')
+        // .type('Barcelona')
+        // cy.get('.geosuggest__item--active > div > .geosuggest__text')
+        // .click()
+        // cy.contains('Barcelona, Spain')
+        cy.searchBar('Barcelona')
     })
 
     it('Select max price to 13 euros', function (){
@@ -110,7 +110,7 @@ describe('Refining search per price', function(){
 
 })
 
-describe.only('Refining search per availability', function(){
+describe('Refining search per availability', function(){
 
     const urlForSearchShortStay = 'https://weblocal.badi.com/s/Rambla-de-Prim--Barcelona--Spain?stay=1&sort=2&bounds=41.4443281427171,2.233610199658216;41.39528359789645,2.1838284003418096&center=41.41981049999998,2.2087193000000127&max=1700&min=1000&d=2&city=Barcelona&pid=EiBSYW1ibGEgZGUgUHJpbSwgQmFyY2Vsb25hLCBTcGFpbiIuKiwKFAoSCf8xpFlLo6QSEZ2ZOxm4Cf36EhQKEgnlMI5xFpikEhEKZkdPPfuwRA&z=14'
     const urlForSearchMediumStay = 'https://weblocal.badi.com/s/Rambla-de-Prim--Barcelona--Spain?stay=6&sort=2&bounds=41.4443281427171,2.233610199658216;41.39528359789645,2.1838284003418096&center=41.41981049999998,2.2087193000000127&max=1700&min=1000&d=2&city=Barcelona&pid=EiBSYW1ibGEgZGUgUHJpbSwgQmFyY2Vsb25hLCBTcGFpbiIuKiwKFAoSCf8xpFlLo6QSEZ2ZOxm4Cf36EhQKEgnlMI5xFpikEhEKZkdPPfuwRA&z=14'

@@ -1,4 +1,4 @@
-describe('Lister checks request', function() {
+describe('Lister checks inbox', function() {
     beforeEach(function () {
         cy.signIn({email: 'jules.maurel@badiapp.com', password: 'Test.123'})
         cy.url().should('include', 'overview')

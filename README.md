@@ -9,6 +9,7 @@ Start your local server before testing with Cypress
 ## Copy this repository to your machine
 
 $ git clone https://github.com/jmaurelbadi/Web_automation_Cypress.git
+
 $ cd Web_automation
 
 ## Start Cypress test runner

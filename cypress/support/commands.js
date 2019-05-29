@@ -39,7 +39,7 @@ Cypress.Commands.add('logOut', () => {
         cy.get('.TopBar__UserMenu').contains('Log out').click({force:true});
          
 })
-Cypress.Commands.add('searchBar', (searchTerms) => {
+Cypress.Commands.add('searchBar ', (searchTerms) => {
         cy.get('.geosuggest__input')
         .type(searchTerms)
         cy.get('.geosuggest__item--active > div > .geosuggest__text')

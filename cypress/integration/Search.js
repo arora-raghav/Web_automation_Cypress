@@ -1,21 +1,12 @@
 
+
+//Should not mixed users
 // simple going to the page and searching using the filters
-
-describe('Opening the app', function() {
-    it('finds the content "Barcelona"', function() {
-      cy.visit('https://weblocal.badi.com/')
-  
-      cy.contains('Barcelona')
-    })
-  })
-
-describe('Searching for Barcelona', function(){
+describe('SQA-775 - Searching with filters', function(){
     it('Search for Barcelona in search bar', function () {
-        cy.get('.geosuggest__input')
-        .type('Barcelona')
-        cy.get('.geosuggest__item--active > div > .geosuggest__text')
-        .click()
-        cy.contains('Barcelona, Spain')
+        cy.visit('https://weblocal.badi.com/')
+        cy.contains('Barcelona')
+        cy.searchBar('Barcelona')
 
     })
 
@@ -30,11 +21,12 @@ describe('Searching for Barcelona', function(){
         cy.contains('Choose day')
         cy.get('.filter__options_status > .filter__dropdown > .filter__box > .filter__list > :nth-child(2) > .switcher > .switcher__text').click()    
         cy.contains('May 2019') 
-        cy.get('[aria-label="Monday, May 27, 2019"]').click()
-        cy.contains('27 May')
+        cy.get('[aria-label="Friday, May 31, 2019"]').click()
+        cy.get('.filter__options_status > .filter__select').should('have.text', '31 May')
         cy.get('.filter__options_status > .filter__choose > .filter__clear').click()
     })
 
+    // select amenities and assert 
     it('Selecting amenities', function () {
         cy.get('.filter__options_type > .filter__select').click()
         cy.contains('Bed type')
@@ -42,7 +34,15 @@ describe('Searching for Barcelona', function(){
         cy.get(':nth-child(2) > .filter__list > :nth-child(1) > .switcher > .switcher__text').click()
         cy.contains('Wifi').click()
         cy.contains('Washing machine').click()
-        cy.contains('Amenities').click()
+        debugger
+        // apply amenities and assert
+        cy.get('.Button__green.Button__link > .Button__text').click()
+        cy.get('.filter__options_type > .filter__select').should('have.text', 'Amenities applied ')
+        debugger
+        // remove amenities and assert
+        cy.get('.filter__options_type > .filter__choose > .filter__clear').click()
+        cy.get('.filter__options_type > .filter__select').should('not.have.text', 'Amenities applied ')
+
 
     })
 
@@ -69,13 +69,13 @@ describe('Searching for Barcelona', function(){
 
     it('Close the chat and go back to homepage', function (){
         cy.get(':nth-child(2) > .popup > .popup__main > .popup__head > .popup__close').click()
-        cy.get('.popup__close').click()
+        cy.get('.popup__close').first().click()
         cy.get('a > svg').click()
     })
 
 })
 
-describe.only('Refining search per price', function(){
+describe('Refining search per price', function(){
 
     it('finds the content "Barcelona"', function() {
         cy.visit('https://weblocal.badi.com/')
@@ -83,12 +83,8 @@ describe.only('Refining search per price', function(){
         cy.contains('Barcelona')
       })
 
+      //using search command
     it('Search for Barcelona in search bar', function () {
-        // cy.get('.geosuggest__input')
-        // .type('Barcelona')
-        // cy.get('.geosuggest__item--active > div > .geosuggest__text')
-        // .click()
-        // cy.contains('Barcelona, Spain')
         cy.searchBar('Barcelona')
     })
 

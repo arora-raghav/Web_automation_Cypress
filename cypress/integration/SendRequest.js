@@ -1,15 +1,10 @@
 describe('Seeker sends request', function() {
-
-
-    // need a seeker account with complete profile
-
-    it('Seekers logs in', function () {
-
+    beforeEach(function () {
         cy.signIn({email: 'jules.seeker@mailinator.com', password: 'Test.123'})
-
+        cy.visit('https://webnext.badi.com/?source=/overview')
     })
 
-    // search for barcelona
+ // search for barcelona
     it('Search for Rambla de Prim, Barcelona, Spain in search bar', function () {
         cy.get('.FeaturedCity__Image').first().click()
         cy.url().should('include', 'Barcelona')

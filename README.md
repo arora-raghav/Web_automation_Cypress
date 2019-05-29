@@ -20,6 +20,6 @@ The test runner should open
 
 ## How to run the tests
 
-You can click direclty on the test you want to run in the test runner.
+You can click directly on the test you want to run in the test runner.
 
 Use Cypress great documentation: https://docs.cypress.io/guides/overview/why-cypress.html#In-a-nutshell

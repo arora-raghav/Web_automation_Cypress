@@ -2,22 +2,22 @@
 
 Testing Cypress to write E2E test for Badi Web
 
-#How to install Cypress
+# How to install Cypress
 
 Start your local server before testing with Cypress
 
-##Copy this repository to your machine
+## Copy this repository to your machine
 
 $ git clone https://github.com/jmaurelbadi/Web_automation_Cypress.git
 $ cd Web_automation
 
-##Start Cypress test runner
+## Start Cypress test runner
 
 $ npm run cypress:open
 
 The test runner should open
 
-##How to run the tests
+## How to run the tests
 
 You can click direclty on the test you want to run in the test runner.
 

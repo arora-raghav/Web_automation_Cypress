@@ -3,11 +3,12 @@
 //Should not mixed users
 // simple going to the page and searching using the filters
 describe('SQA-775 - Searching with filters', function(){
+
+
     it('Search for Barcelona in search bar', function () {
         cy.visit('https://weblocal.badi.com/')
         cy.contains('Barcelona')
         cy.searchBar('Barcelona')
-
     })
 
     it('Check cookie banner', function (){
@@ -34,11 +35,13 @@ describe('SQA-775 - Searching with filters', function(){
         cy.get(':nth-child(2) > .filter__list > :nth-child(1) > .switcher > .switcher__text').click()
         cy.contains('Wifi').click()
         cy.contains('Washing machine').click()
-        debugger
+        
         // apply amenities and assert
         cy.get('.Button__green.Button__link > .Button__text').click()
-        cy.get('.filter__options_type > .filter__select').should('have.text', 'Amenities applied ')
-        debugger
+
+        // line below always pass - not good
+        cy.get('.filter__options_type > .filter__choose > span').should('have.text', 'Amenities applied')
+        
         // remove amenities and assert
         cy.get('.filter__options_type > .filter__choose > .filter__clear').click()
         cy.get('.filter__options_type > .filter__select').should('not.have.text', 'Amenities applied ')
